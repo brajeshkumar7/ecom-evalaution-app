@@ -11,6 +11,8 @@ const orderRouter = require("./routes/customer_orders");
 const slugRouter = require("./routes/slugs");
 const orderProductRouter = require('./routes/customer_order_product');
 const wishlistRouter = require('./routes/wishlist');
+const dashboardRoutes = require('./routes/dashboardRoutes');
+const logVisitor = require('./middleware/logVisitor');
 var cors = require("cors");
 
 const app = express();
@@ -35,6 +37,13 @@ app.use("/api/orders", orderRouter);
 app.use('/api/order-product', orderProductRouter);
 app.use("/api/slugs", slugRouter);
 app.use("/api/wishlist", wishlistRouter);
+app.use('/api/dashboard', dashboardRoutes);
+
+
+
+// Apply visitor logging middleware for all visitor-facing API routes
+app.use('/api/products', logVisitor);
+
 
 
 const PORT = process.env.PORT || 3001;

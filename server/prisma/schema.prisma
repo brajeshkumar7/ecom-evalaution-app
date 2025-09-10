@@ -27,6 +27,8 @@ model Product {
   category       Category                 @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   customerOrders customer_order_product[]
   Wishlist       Wishlist[]
+  createdAt   DateTime @default(now()) 
+  deletedAt DateTime?
 }
 
 model Image {
@@ -83,4 +85,23 @@ model Wishlist {
   productId String
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
+}
+
+model ProductTrend {
+  id              Int      @id @default(autoincrement())
+  productId       Int
+  action          String   // "added" or "removed"
+  count           Int      // Number of products added/removed in the event
+  trendDate       DateTime // Date the event occurred
+
+  // Optionally, if you have a Product table, relate here:
+  // product         Product? @relation(fields: [productId], references: [id])
+}
+
+model VisitorLog {
+  id              Int      @id @default(autoincrement())
+  sessionId       String   // Session or visitor identifier
+  userAgent       String?  // Browser info, optional
+  ip              String?  // Visitor IP, optional
+  visitDate       DateTime // Date/time of the visit
 }
