@@ -176,7 +176,7 @@ trendDate: new Date(),
 - Middleware `logVisitor.js` captures visit details on public API routes.
 - Logs session ID, user agent, IP address, and visit timestamp in `visitor_logs`.
 - Applied to relevant public-facing routes using `app.use()` in `server/app.js`.
-![Middleware, Products API response screenshot](screenshots\middlewareTest.png)
+![Middleware, Products API response screenshot](screenshots/middlewareTest.png)
 
 
 ---
@@ -207,11 +207,11 @@ node app.js
 4. Test APIs via Postman or curl with various `startDate`, `endDate`, `bucket` params.
 - API Test Result: Products
 
-![Products endpoint Postman result](screenshots\productsTest.png)
+![Products endpoint Postman result](screenshots/productsTest.png)
 
 - API Test Result: Visitors
 
-![Visitors endpoint Postman result](screenshots\visitiorsTest.png)
+![Visitors endpoint Postman result](screenshots/visitiorsTest.png)
 
 
 ---
